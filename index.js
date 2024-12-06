@@ -22,10 +22,10 @@ const client = new Client({
 
 console.log("bot arrancó")
 
-/*keepAlive();
+keepAlive();
 
 const monitor=new Monitor({
-    website: "s3://bot-natalio-ruiz",
+    website: "https://bot-natalio.onrender.com",
     title: "natalio",
     interval: 5
 });
@@ -34,10 +34,10 @@ monitor.on('up', (res) => console.log(`${res.website} esta encendido`))
 monitor.on('down', (res) => console.log(`${res.website} esta caido - ${res.statusMessage}`))
 monitor.on('stop', (res) => console.log(`${res.website} se frenó`))
 monitor.on('error', (error) => console.log(error))
-*/
 
 const CLIENT_ID = config.client_id;
-const CLIENT_SECRET = config.client_secret;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
 const songRegex = /cancion:\s*(.+)/i;
 const videoRegex= /video:\s*(.+)/i;
@@ -185,4 +185,4 @@ async function searchIMDB(movieName) {
 }
 
 
-client.login(config.token);
+client.login(DISCORD_TOKEN);
