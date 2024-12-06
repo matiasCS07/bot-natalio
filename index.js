@@ -185,4 +185,4 @@ async function searchIMDB(movieName) {
 }
 
 
-client.login(config.token);
+client.login(DISCORD_TOKEN);
