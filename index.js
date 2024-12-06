@@ -1,6 +1,5 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const ytSearch = require('yt-search'); // Para buscar canciones en YouTube
-const config = require('./config.json');
 const axios = require('axios');
 const qs = require('qs');
 const Monitor=require('ping-monitor')
