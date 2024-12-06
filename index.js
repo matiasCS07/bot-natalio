@@ -25,7 +25,7 @@ console.log("bot arrancó")
 keepAlive();
 
 const monitor=new Monitor({
-    website: "web",
+    website: "https://bot-natalio.onrender.com",
     title: "natalio",
     interval: 5
 });
@@ -35,8 +35,9 @@ monitor.on('down', (res) => console.log(`${res.website} esta caido - ${res.statu
 monitor.on('stop', (res) => console.log(`${res.website} se frenó`))
 monitor.on('error', (error) => console.log(error))
 
-const CLIENT_ID = config.client_id;
-const CLIENT_SECRET = config.client_secret;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
 const songRegex = /cancion:\s*(.+)/i;
 const videoRegex= /video:\s*(.+)/i;
@@ -164,7 +165,7 @@ async function searchIMDB(movieName) {
         const response = await axios.get('https://www.omdbapi.com/', {
             params: {
                 t: movieName,  // El nombre de la película
-                apikey: config.imdb_key,  // La clave de tu API
+                apikey: process.env.IMDB_KEY,  // La clave de tu API
             },
         });
 
@@ -184,4 +185,4 @@ async function searchIMDB(movieName) {
 }
 
 
-client.login(config.token);
+client.login(DISCORD_TOKEN);
