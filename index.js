@@ -35,7 +35,7 @@ monitor.on('down', (res) => console.log(`${res.website} esta caido - ${res.statu
 monitor.on('stop', (res) => console.log(`${res.website} se frenó`))
 monitor.on('error', (error) => console.log(error))
 
-const CLIENT_ID = config.client_id;
+const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
@@ -165,7 +165,7 @@ async function searchIMDB(movieName) {
         const response = await axios.get('https://www.omdbapi.com/', {
             params: {
                 t: movieName,  // El nombre de la película
-                apikey: config.imdb_key,  // La clave de tu API
+                apikey: process.env.IMDB_KEY,  // La clave de tu API
             },
         });
 
